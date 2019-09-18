@@ -32,7 +32,7 @@ y_data_line_plot = {1, 2, 3, 4, 5}
 
 A chart is correctly shown as seen in the picture:
 
-[PICTURE]
+![Correct chart](https://github.com/marcoreato/vtkScatterPlotBug/blob/master/correct_plot.jpeg)
 
 By shifting the ordinates of `400 = x_range * 100`:
 
@@ -46,6 +46,6 @@ y_data_line_plot = {401, 402, 403, 404, 405}
 
 The chart is not correctly displayed, as seen in the picture: 
 
-[PICTURE]
+![Wrong chart](https://github.com/marcoreato/vtkScatterPlotBug/blob/master/empty_plot.jpeg)
 
 While the scale of the axis is correctly placed the two `vtkPlot` are not shown.
