@@ -14,7 +14,8 @@ When adding a `vtkPlot` to a `vtkChartXY` object, its content is not rendered co
 
 1. `vtkRenderWindowInteractor` is not being used and the view is rendered directly by the user (situation common in off-screen rendering usage).
 2. The `x` data _values_ are ~100 times the `x` data _range_ (more details in the Example section).
-3. The provided example shows this behavior both for `vtkChart::LINE` and `vtkChart::POINTS` plots.
+
+The provided example shows this behavior both for `vtkChart::LINE` and `vtkChart::POINTS` plots.
 
 #### Example
 
@@ -26,8 +27,8 @@ The example in this repository shows how it's possible to reproduce the issue fo
 $ ./Plot 0.0
 Using: vtk version 8.2.0
 x_data = {1, 2, 3, 4, 5} 
-y_data_point_plot = {1, 2, 3, 4, 5} 
-y_data_line_plot = {1, 2, 3, 4, 5}
+y_data_point_plot = {1, 1, 1, 1, 1} 
+y_data_line_plot = {2, 2, 2, 2, 2}
 ```
 
 A chart is correctly shown as seen in the picture:
@@ -40,8 +41,8 @@ By shifting the ordinates of `400 = x_range * 100`:
 $ ./Plot 400
 Using: vtk version 8.2.0
 x_data = {401, 402, 403, 404, 405} 
-y_data_point_plot = {401, 402, 403, 404, 405} 
-y_data_line_plot = {401, 402, 403, 404, 405}
+y_data_point_plot = {1, 1, 1, 1, 1} 
+y_data_line_plot = {2, 2, 2, 2, 2}}
 ```
 
 The chart is not correctly displayed, as seen in the picture: 

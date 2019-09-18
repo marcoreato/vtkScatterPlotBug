@@ -60,14 +60,14 @@ int main(int argc, char **argv)
   vector<float> x = {SHIFT + 1.0f, SHIFT + 2.0f, SHIFT + 3.0f, SHIFT + 4.0f, SHIFT + 5.0f};
   arrX->SetArray(x.data(), x.size(), 1);
   printVector("x_data", x);
-
+  
   vector<float> y(5, 1.0f);
   arrY->SetArray(y.data(), y.size(), 1);
-  printVector("y_data_point_plot", x);
+  printVector("y_data_point_plot", y);
 
   vector<float> y2(5, 2.0f);
   arrL->SetArray(y2.data(), y2.size(), 1);
-  printVector("y_data_line_plot", x);
+  printVector("y_data_line_plot", y2);
 
   auto plot = chart->AddPlot(vtkChart::POINTS);
 
