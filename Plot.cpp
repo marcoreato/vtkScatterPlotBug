@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 
   if (WORKAROUNT_ENABLED)
   {
-    cout << "WORKAROUNT ENABLED!" << '\n';
+    cout << "WORKAROUND ENABLED!" << '\n';
   }
 
   // Declare vtkContextView and add a vtkChartXY to its scene.

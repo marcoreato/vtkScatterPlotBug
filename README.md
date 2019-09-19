@@ -80,7 +80,7 @@ By running the second example with the workaround activated the results are:
 
 ```
 Using: vtk version 8.2.0
-WORKAROUNT ENABLED!
+WORKAROUND ENABLED!
 x_data = {401, 402, 403, 404, 405} 
 y_data_point_plot = {1, 1, 1, 1, 1} 
 y_data_line_plot = {2, 2, 2, 2, 2} 
