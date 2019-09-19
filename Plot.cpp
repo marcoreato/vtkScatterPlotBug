@@ -20,23 +20,39 @@
 using namespace std;
 
 void printVector(const string &name, const vector<float> &vector);
+void helpMessage();
 
 int main(int argc, char **argv)
 {
-  cout << "Using: " << vtkVersion::GetVTKSourceVersion() << '\n';
+
+  if (argc < 3)
+  {
+    helpMessage();
+    return -1;
+  }
 
   // SHIFT will be added to the X coordinates of the plots.
-  const float SHIFT = (argc < 2) ? 0.0f : stof(argv[1]);
+  const float SHIFT = stof(argv[1]);
 
-  // Declare vtkContextView and a vtkChartXY to its scene.
+  // Enable the workaround for X values that trigger the issue.
+  const int WORKAROUNT_ENABLED = stoi(argv[2]);
+
+  cout << "Using: " << vtkVersion::GetVTKSourceVersion() << '\n';
+
+  if (WORKAROUNT_ENABLED)
+  {
+    cout << "WORKAROUNT ENABLED!" << '\n';
+  }
+
+  // Declare vtkContextView and add a vtkChartXY to its scene.
   vtkNew<vtkContextView> view;
   view->GetRenderWindow()->SetSize(1920, 1080);
 
   vtkNew<vtkChartXY> chart;
   view->GetScene()->AddItem(chart);
 
-  // Fix the range on y axis to better show the issue effect.
-  // Range is fixed in such a way that the following plots are well between its boundaries.
+  // Fix the range on Y axis to better show the issue effect.
+  // Range is fixed in such a way that the pre-defined plots are well in between its boundaries.
   chart->GetAxis(vtkAxis::LEFT)->SetRange(0.0, 3.0);
   chart->GetAxis(vtkAxis::LEFT)->SetBehavior(vtkAxis::FIXED);
 
@@ -60,7 +76,7 @@ int main(int argc, char **argv)
   vector<float> x = {SHIFT + 1.0f, SHIFT + 2.0f, SHIFT + 3.0f, SHIFT + 4.0f, SHIFT + 5.0f};
   arrX->SetArray(x.data(), x.size(), 1);
   printVector("x_data", x);
-  
+
   vector<float> y(5, 1.0f);
   arrY->SetArray(y.data(), y.size(), 1);
   printVector("y_data_point_plot", y);
@@ -82,6 +98,13 @@ int main(int argc, char **argv)
   line->SetWidth(5.0);
 
   view->Render();
+
+  if (WORKAROUNT_ENABLED)
+  {
+    view->Modified();
+    view->Render();
+  }
+
   std::this_thread::sleep_for(std::chrono::milliseconds(5000));
 
   return 0;
@@ -95,4 +118,16 @@ void printVector(const string &name, const vector<float> &vector)
     cout << val << ", ";
 
   cout << "\b\b}" << endl;
+}
+
+void helpMessage()
+{
+  cout << "Use: "
+       << "./Plot [X DATA SHIFT] [ENABLE WORKAROUND]"
+       << '\n'
+       << "Where:"
+       << '\n'
+       << "[X DATA SHIFT]: floating point constant that will be added to all X coordinates."
+       << '\n'
+       << "[ENABLE WORKAROUND]: integer(0,1) enables or disables the workaround." << endl;
 }
