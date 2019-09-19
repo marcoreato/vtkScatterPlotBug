@@ -88,4 +88,4 @@ y_data_line_plot = {2, 2, 2, 2, 2}
 
 The plot is correctly rendered as seen in the picture:
 
-![Workaround chart](https://github.com/marcoreato/vtkScatterPlotBug/blob/master/correct_plot.jpeg)
+![Workaround chart](https://github.com/marcoreato/vtkScatterPlotBug/blob/master/workaround_plot.jpeg)
