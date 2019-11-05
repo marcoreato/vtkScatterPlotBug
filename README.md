@@ -8,7 +8,7 @@ The version used (`v8.2.0`) is the lastest available in the [official VTK reposi
 
 The issue was found by modifying the [scatter plot test shown in the VTK repository](https://gitlab.kitware.com/vtk/vtk/blob/master/Charts/Core/Testing/Cxx/TestScatterPlot.cxx).
 
-This repository refers to the VTK issue: [](https://gitlab.kitware.com/vtk/vtk/issues/17686).
+This repository refers to the VTK issue: https://gitlab.kitware.com/vtk/vtk/issues/17686.
 
 #### Description
 
